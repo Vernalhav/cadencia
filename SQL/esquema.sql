@@ -225,3 +225,72 @@ CREATE TABLE ALUGUEL(
 
     forma_pagamento ENUM('GRATUITO', 'BOLETO', 'CARTAO', 'DINHEIRO')    -- Era NOT NULL no MR
 );
+
+
+CREATE TABLE LUGAR(
+    nome VARCHAR2(100) PRIMARY KEY,
+
+    cidade VARCHAR2(50) NOT NULL,
+    bairro VARCHAR2(50) NOT NULL,
+    rua VARCHAR2(50) NOT NULL,
+    numero NUMBER NOT NULL,
+    complemento VARCHAR2(100),
+
+    CONSTRAINT LUGAR_ENDER_UNICO UNIQUE(cidade, bairro, rua, numero, complemento),
+
+    descricao VARCHAR2(300)
+);
+
+
+CREATE TABLE EVENTO(
+    id_evento NUMBER,
+
+    data DATETIME NOT NULL,
+    lugar VARCHAR2(100) NOT NULL,
+
+    CONSTRAINT FK_EVENTO_LUGAR FOREIGN KEY (lugar) REFERENCES LUGAR(nome),
+
+    CONSTRAINT EVENTO_UNICO UNIQUE(lugar, data),    -- Lugar/data ou data/lugar?
+
+    organizador VARCHAR2(40) NOT NULL,
+    CONSTRAINT FK_EVENTO_ORG FOREIGN KEY organizador REFERENCES ORGANIZADOR(usuario),
+
+    lotacao NUMBER(4) NOT NULL,
+
+    descricao VARCHAR2(300)
+);
+
+
+CREATE TABLE FOTO(
+    id_evento NUMBER, 
+    url VARCHAR2(2048),
+
+    CONSTRAINT FK_FOTO_EVENTO FOREIGN KEY (id_evento) REFERENCES EVENTO(id_evento)
+);
+
+
+CREATE TABLE TIPO_INGRESSO(
+    tipo VARCHAR2(40),
+    id_evento NUMBER,
+
+    CONSTRAINT FK_TIPO_ING_EVENTO FOREIGN KEY (id_evento) REFERENCES EVENTO(id_evento),
+
+    total NUMBER(5) NOT NULL,
+    preco NUMBER NOT NULL,
+    qt_disponiveis NUMBER NOT NULL,
+
+    CONSTRAINT QT_DISP_VALIDA CHECK (qt_disponiveis <= total)
+);
+
+
+CREATE TABLE INGRESSO(
+    codigo_barras NUMBER PRIMARY KEY,
+
+    usuario VARCHAR2(40) NOT NULL,
+    CONSTRAINT FK_INGRESSO_USUARIO FOREIGN KEY (usuario) REFERENCES USUARIO(nome_login)
+
+
+);
+
+
+
