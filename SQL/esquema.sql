@@ -6,10 +6,10 @@ CREATE TABLE USUARIO(
 
     CPF VARCHAR2(14),
     CONSTRAINT UNIQUE_CPF UNIQUE(CPF),
-    CONSTRAINT CK_CPF CHECK(REGEXP_LIKE(CPF, '[0-9]{3}\.[0-9]{3}\.[0-9]{3}\-[0-9]{2}'))
+    CONSTRAINT CK_CPF CHECK(REGEXP_LIKE(CPF, '[0-9]{3}\.[0-9]{3}\.[0-9]{3}\-[0-9]{2}')),
 
     nome VARCHAR2(100),
-    senha VARCHAR2(40)
+    senha VARCHAR2(40),
 
     cidade VARCHAR2(30) NOT NULL,
     bairro VARCHAR2(30) NOT NULL,
@@ -48,11 +48,11 @@ CREATE TABLE DENUNCIA(
     autor VARCHAR2(40),
 
     
-    CONSTRAINT FK_DENUNCIADO FOREIGN KEY (denunciado) REFERENCES USUARIO(nome_login)
-    CONSTRAINT FK_AUTOR FOREIGN KEY (autor) REFERENCES USUARIO(nome_login)
+    CONSTRAINT FK_DENUNCIADO FOREIGN KEY (denunciado) REFERENCES USUARIO(nome_login),
+    CONSTRAINT FK_AUTOR FOREIGN KEY (autor) REFERENCES USUARIO(nome_login),
 
     data TIMESTAMP,
-    CONSTRAINT PK_DENUNCIA PRIMARY KEY (denunciado, autor, data)
+    CONSTRAINT PK_DENUNCIA PRIMARY KEY (denunciado, autor, data),
 
     conteudo VARCHAR2(200) NOT NULL
 );
@@ -210,7 +210,7 @@ CREATE TABLE ALUGUEL(
                                 REFERENCES INSTRUMENTO(nome, proprietario),
 
     locatario VARCHAR2(40) NOT NULL,
-    CONSTRAINT FK_ALUGUEL_LOCAT FOREIGN KEY (locatario) REFERENCES LOCATARIO(usuario)
+    CONSTRAINT FK_ALUGUEL_LOCAT FOREIGN KEY (locatario) REFERENCES LOCATARIO(usuario),
 
     data_emprestimo DATE,
     data_devolucao DATE NOT NULL,
@@ -270,10 +270,11 @@ CREATE TABLE FOTO(
 
 
 CREATE TABLE TIPO_INGRESSO(
-    tipo VARCHAR2(40),
+    tipo VARCHAR2(40),      -- Ex: pista, camarote, arquibancada...
     id_evento NUMBER,
 
     CONSTRAINT FK_TIPO_ING_EVENTO FOREIGN KEY (id_evento) REFERENCES EVENTO(id_evento),
+    CONSTRAINT PK_TIPO_ING PRIMARY KEY (id_evento, tipo),
 
     total NUMBER(5) NOT NULL,
     preco NUMBER NOT NULL,
@@ -287,9 +288,13 @@ CREATE TABLE INGRESSO(
     codigo_barras NUMBER PRIMARY KEY,
 
     usuario VARCHAR2(40) NOT NULL,
-    CONSTRAINT FK_INGRESSO_USUARIO FOREIGN KEY (usuario) REFERENCES USUARIO(nome_login)
+    CONSTRAINT FK_INGRESSO_USUARIO FOREIGN KEY (usuario) REFERENCES USUARIO(nome_login),
 
+    tipo_ingresso VARCHAR2(40) NOT NULL,
+    id_evento NUMBER NOT NULL,
+    CONSTRAINT FK_INGRESSO_TIPO FOREIGN KEY (id_evento, tipo_ingresso) REFERENCES TIPO_INGRESSO(id_evento, tipo),
 
+    forma_pagamento ENUM('GRATUITO', 'BOLETO', 'CARTAO', 'DINHEIRO')    -- Era NOT NULL no MR
 );
 
 
