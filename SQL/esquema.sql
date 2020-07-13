@@ -23,22 +23,21 @@ CREATE TABLE CONTA(
     usuario VARCHAR2(40) PRIMARY KEY,
     CONSTRAINT FK_CONTA FOREIGN KEY (usuario) REFERENCES USUARIO(nome_login),
 
-    -- TODO: checks e tamanhos
-    agencia VARCHAR2() NOT NULL,
-    conta_corrente VARCHAR2() NOT NULL,
-    banco VARCHAR2() NOT NULL
+    agencia VARCHAR2(6) NOT NULL,
+    conta_corrente VARCHAR2(11) NOT NULL,
+    banco VARCHAR2(50) NOT NULL
 );
 
 
 CREATE TABLE CARTAO(
     usuario VARCHAR2(40),
-    numero VARCHAR2(16),    -- TODO: Verificação
+    numero VARCHAR2(16),
 
     CONSTRAINT FK_CONTA FOREIGN KEY (usuario) REFERENCES USUARIO(nome_login),
     CONSTRAINT PK_CARTAO PRIMARY KEY (usuario, numero),
 
     CVV NUMBER(3) NOT NULL,
-    validade VARCHAR2(5) NOT NULL,      -- TODO: Verificação
+    validade VARCHAR2(5) NOT NULL,
     proprietario VARCHAR2(50) NOT NULL
 );
 
@@ -106,7 +105,6 @@ CREATE TABLE PROPRIETARIO(
     usuario VARCHAR2(40) PRIMARY KEY,
     CONSTRAINT FK_PROPRIETARIO FOREIGN KEY (usuario) REFERENCES USUARIO(nome_login),
     
-    -- TODO: Decidir escala da avaliação e cálculo corrente
     avaliacao NUMBER(1, 1) DEFAULT 5 NOT NULL,
     CONSTRAINT AVALIACAO_VALIDA_PROP CHECK(0 <= avaliacao && avaliacao <= 5),
 
@@ -118,7 +116,6 @@ CREATE TABLE LOCATARIO(
     usuario VARCHAR2(40) PRIMARY KEY,
     CONSTRAINT FK_LOCATARIO FOREIGN KEY (usuario) REFERENCES USUARIO(nome_login),
 
-    -- TODO: Decidir escala da avaliação e cálculo corrente
     avaliacao NUMBER(1, 1) DEFAULT 5 NOT NULL,
     CONSTRAINT AVALIACAO_VALIDA_LOCAT CHECK(0 <= avaliacao && avaliacao <= 5),
 
@@ -136,9 +133,8 @@ CREATE TABLE HORA_DISP(
     professor VARCHAR2(40),
     CONSTRAINT FK_DISP_PROF FOREIGN KEY (professor) REFERENCES PROFESSOR(nome_login),
 
-    -- TODO: melhorar implementação/checks
-    dia_semana CHAR(1),
-    hora NUMBER(2),
+    dia_semana ENUM('DOMINGO', 'SEGUNDA', 'TERCA', 'QUARTA', 'QUINTA', 'SEXTA', 'SABADO'),
+    hora NUMBER(2),     -- EX: hora 15 siginifica horário disponível das 15:00 às 16:00
 
     CONSTRAINT PK_HORA_DISP PRIMARY KEY (professor, dia_semana, hora)
 );
@@ -172,7 +168,6 @@ CREATE TABLE AULA(
 
     CONSTRAINT PK_AULA PRIMARY KEY (professor, data_aula),
 
-    -- TODO: Vamos implementar local da aula assim?
     local VARCHAR2(100) NOT NULL,
     duracao NUMBER(2) NOT NULL DEFAULT 1,
 
@@ -182,7 +177,7 @@ CREATE TABLE AULA(
     tipo_instrumento VARCHAR2(30) NOT NULL,
     CONSTRAINT FK_AULA_TIPO_INST FOREIGN KEY (instrumento) REFERENCES CLASSIFICACAO_INSTRUMENTO(instrumento),
 
-    forma_pagamento ENUM('GRATUITO', 'BOLETO', 'CARTAO', 'DINHEIRO')    -- Era NOT NULL no MR
+    forma_pagamento ENUM('GRATUITO', 'BOLETO', 'CARTAO', 'DINHEIRO') NOT NULL
 );
 
 
@@ -217,13 +212,12 @@ CREATE TABLE ALUGUEL(
 
     CONSTRAINT PK_AULGUEL PRIMARY KEY (instrumento_dono, instrumento_nome, data_emprestimo),
 
-    -- TODO: Decidir escala da avaliação
     avaliacao_prop NUMBER(1, 1) NOT NULL,
     avaliacao_locatario NUMBER(1, 1) NOT NULL,
     CONSTRAINT AVALIACAO_ALUGUEL_PROP CHECK(0 <= avaliacao_prop && avaliacao_prop <= 5),
     CONSTRAINT AVALIACAO_ALUGUEL_LOCAT CHECK(0 <= avaliacao_locatario && avaliacao_locatario <= 5),
 
-    forma_pagamento ENUM('GRATUITO', 'BOLETO', 'CARTAO', 'DINHEIRO')    -- Era NOT NULL no MR
+    forma_pagamento ENUM('GRATUITO', 'BOLETO', 'CARTAO', 'DINHEIRO') NOT NULL
 );
 
 
@@ -250,7 +244,7 @@ CREATE TABLE EVENTO(
 
     CONSTRAINT FK_EVENTO_LUGAR FOREIGN KEY (lugar) REFERENCES LUGAR(nome),
 
-    CONSTRAINT EVENTO_UNICO UNIQUE(lugar, data),    -- Lugar/data ou data/lugar?
+    CONSTRAINT EVENTO_UNICO UNIQUE(data, lugar),
 
     organizador VARCHAR2(40) NOT NULL,
     CONSTRAINT FK_EVENTO_ORG FOREIGN KEY organizador REFERENCES ORGANIZADOR(usuario),
@@ -294,7 +288,7 @@ CREATE TABLE INGRESSO(
     id_evento NUMBER NOT NULL,
     CONSTRAINT FK_INGRESSO_TIPO FOREIGN KEY (id_evento, tipo_ingresso) REFERENCES TIPO_INGRESSO(id_evento, tipo),
 
-    forma_pagamento ENUM('GRATUITO', 'BOLETO', 'CARTAO', 'DINHEIRO')    -- Era NOT NULL no MR
+    forma_pagamento ENUM('GRATUITO', 'BOLETO', 'CARTAO', 'DINHEIRO') NOT NULL
 );
 
 
