@@ -1,0 +1,11 @@
+-- Tipos variados de consultas:
+--      GROUP BY
+--      LEFT/RIGHT JOIN
+--      MINUS/UNION
+--      aninhadas
+--      DIVIDE?
+
+-- Listar todos os professores que ensinam todos os instrumentos de uma categoria
+-- e têm em média X horas livres por dia
+    -- JOIN/"DIVIDE"/GROUP BY/e tudo mais
+-- 
