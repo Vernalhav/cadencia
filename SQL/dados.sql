@@ -47,16 +47,16 @@ INSERT INTO ALUNO (usuario) VALUES ('ju.pereira');
 INSERT INTO ALUNO (usuario) VALUES ('marcos085');
 
  -- DADOS PROFESSOR
-INSERT INTO PROFESSOR (usuario, hora_aula, descricao) VALUES ('dri_zinha', 20.5,'Dou aula a 10 anos, paciente com iniciantes. Também dou aula para pessoas já avançadas que querem aperfeiçoar a sua técnica.');
-INSERT INTO PROFESSOR (usuario, hora_aula, descricao) VALUES ('tgamer', 30.0, 'Aula completa para iniciantes no assunto.');
+INSERT INTO PROFESSOR (usuario, hora_aula, n_aulas, descricao) VALUES ('dri_zinha', 20.5, 1,'Dou aula a 10 anos, paciente com iniciantes. Também dou aula para pessoas já avançadas que querem aperfeiçoar a sua técnica.');
+INSERT INTO PROFESSOR (usuario, hora_aula, descricao) VALUES ('tgamer', 30.0, 1, 'Aula completa para iniciantes no assunto.');
 
- -- DADOS PROPRIETARIO
-INSERT INTO PROPRIETARIO (usuario) VALUES ('shaolin.matador');
-INSERT INTO PROPRIETARIO (usuario) VALUES ('flavin_do_peneu');
+ -- DADO PROPRIETARIO
+INSERT INTO PROPRIETARIO (usuario, avaliacao, n_emprestimos) VALUES ('shaolin.matador', 2.5, 2);
+INSERT INTO PROPRIETARIO (usuario, avaliacao, n_emprestimos) VALUES ('flavin_do_peneu', 3.0, 1);
 
  -- DADOS LOCATARIO
-INSERT INTO LOCATARIO (usuario) VALUES ('marcos085');
-INSERT INTO LOCATARIO (usuario) VALUES ('ana.sant');
+INSERT INTO LOCATARIO (usuario, avaliacao, n_alugueis ) VALUES ('marcos085', 4.5, 2);
+INSERT INTO LOCATARIO (usuario, avaliacao, n_alugueis ) VALUES ('ana.sant', 5.0, 1);
 
  -- DADOS ORGANIZADOR
 INSERT INTO ORGANIZADOR (usuario) VALUES ('tgamer');
@@ -85,3 +85,17 @@ INSERT INTO INSTRUMENTOS_TOCADOS (professor, tipo_instrumento) VALUES ('dri_zinh
 INSERT INTO INSTRUMENTOS_TOCADOS (professor, tipo_instrumento) VALUES ('tgamer', 'SAXOFONE');
 INSERT INTO INSTRUMENTOS_TOCADOS (professor, tipo_instrumento) VALUES ('tgamer', 'CLARINETE');
 INSERT INTO INSTRUMENTOS_TOCADOS (professor, tipo_instrumento) VALUES ('tgamer', 'BATERIA');
+
+ -- DADO AULA
+INSERT INTO AULA (data_aula, professor, aluno, local, duracao, valor, tipo_instrumento, forma_pagamento) VALUES (TO_DATE('2019/06/15 14:00:00', 'YYYY-MM-DD HH24:MI:SS'),'dri_zinha', 'ju.pereira', 'Centro Da Cultural da Penha', '1', 20.5, 'BAIXO', 'DINHEIRO');
+INSERT INTO AULA (data_aula, professor, aluno, local, duracao, valor, tipo_instrumento, forma_pagamento) VALUES (TO_DATE('2019/06/30 10:00:00', 'YYYY-MM-DD HH24:MI:SS'),'tgamer', 'marcos085', 'Centro Da Cultural do Games', '1', 30.0, 'CLARINETE', 'CARTAO');
+
+ -- DADO INSTRUMENTO
+INSERT INTO INSTRUMENTO (nome, proprietario, disponivel, tipo) VALUES ('Clarinete Do Matador', 'shaolin.matador', 'Y', 'CLARINETE');
+INSERT INTO INSTRUMENTO (nome, proprietario, disponivel, tipo) VALUES ('Sax Do Matador', 'shaolin.matador', 'N', 'SAXOFONE');
+INSERT INTO INSTRUMENTO (nome, proprietario, disponivel, tipo) VALUES ('Baixo Do flavin', 'flavin_do_peneu', 'Y', 'BAIXO');
+
+ -- DADO ALUGUEL
+INSERT INTO ALUGUEL (instrumento_nome, instrumento_dono, locatario, data_emprestimo, data_devolucao, avaliacao_prop, avaliacao_locatario, forma_pagamento) VALUES ('Clarinete Do Matador', 'shaolin.matador', 'marcos085', TO_DATE('2019/04/04 17:05:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2019/04/09 17:05:00', 'YYYY-MM-DD HH24:MI:SS'), 3.0, 5.0, 'DINHEIRO');
+INSERT INTO ALUGUEL (instrumento_nome, instrumento_dono, locatario, data_emprestimo, data_devolucao, avaliacao_prop, avaliacao_locatario, forma_pagamento) VALUES ('Sax Do Matador', 'shaolin.matador', 'marcos085', TO_DATE('2019/05/04 17:05:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2019/05/09 17:05:00', 'YYYY-MM-DD HH24:MI:SS'), 2.0, 4.0, 'DINHEIRO');
+INSERT INTO ALUGUEL (instrumento_nome, instrumento_dono, locatario, data_emprestimo, data_devolucao, avaliacao_prop, avaliacao_locatario, forma_pagamento) VALUES ('Baixo Do flavin', 'flavin_do_peneu', 'ana.sant', TO_DATE('2019/02/04 15:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2019/02/09 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), 3.0, 5.0, 'DINHEIRO');
