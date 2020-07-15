@@ -46,3 +46,6 @@
 -- Listar os proprietários que tiveram uma avaliação melhor que a média dos proprietários da sua cidade.
     -- pode aumentar a complexidade fazendo com que só considere a avaliação dos últimos 30 dias, assim adicionando uma junção e group by.
     -- Aninhada correlacionada (pode adicionar GROUP BY).
+    
+-- Listar o CPF, nome de login e avaliação dos usuários que estão envolvidos em um aluguel ativo no momento, isto é, data_emprestimo < data atual < data_devolução.
+    -- UNION e MINUS? ( não tenho certeza se é o único jeito de resolver)
