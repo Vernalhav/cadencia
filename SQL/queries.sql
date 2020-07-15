@@ -52,4 +52,8 @@
     -- UNION e MINUS? ( não tenho certeza se é o único jeito de resolver)
     
 -- Buscar os eventos que venderam menos ingressos que a média dos ingressos vendidos dos eventos que ocorreram no mesmo lugar.
-    -- Group By, aninhada não-correlacionada
+    -- Group By, aninhada correlacionada
+
+-- Buscar os usuários que já conversaram com o usuário que teve mais denuncias direcionada a ele.
+    -- Aninhada não-correlacionada
+        -- Pode fazer com que busque qualquer usuário que já esteve envolvido em uma aula ou aluguel com este usuário, assim aumentando a complexidade da consulta.
