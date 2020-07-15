@@ -8,7 +8,7 @@
 -- Listar todos os professores que ensinam todos os instrumentos de uma categoria
 -- e têm em média X horas livres por dia
     -- JOIN/"DIVIDE"/GROUP BY/e tudo mais
-    (Luan) -- pode tbm buscar se da aula em um dia da semana, deixa mais simples do que a média de horas, mas fica com mais sentido.
+    (Luan) -- se acharem muito viajado a busca, pode tbm buscar se da aula em um dia da semana, deixa mais simples do que a média de horas, mas fica com mais sentido.
 
 -- Selecionar, para cada usuário, o seu nome. Para aqueles que são alunos, selecionar
 -- o nome (ñ de login) do professor com o maior número de aulas que ensina o tipo de
