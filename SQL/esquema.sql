@@ -167,7 +167,7 @@ CREATE TABLE AULA(
     CONSTRAINT PK_AULA PRIMARY KEY (professor, data_aula),
 
     tipo_instrumento VARCHAR2(30) NOT NULL,
-    CONSTRAINT FK_AULA_INST_TOCADOS FOREIGN KEY (professor, tipo_instrumento) REFERENCES INSTRUMENTOS_TOCADOS(professor, tipo_instrumento)
+    CONSTRAINT FK_AULA_INST_TOCADOS FOREIGN KEY (professor, tipo_instrumento) REFERENCES INSTRUMENTOS_TOCADOS(professor, tipo_instrumento),
 
     local VARCHAR2(100) NOT NULL,
     duracao NUMBER(2) DEFAULT 1 NOT NULL,
