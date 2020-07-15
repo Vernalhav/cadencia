@@ -32,6 +32,7 @@
 
 -- Dado uma classificação de um instrmento, listar o(s) proprietário(s) com maior média de avaliação
 -- dessa classificação. (Ex: o proprietário com o maior média de avaliações de instrumentos de cordas)
+        (Luan) -- acho que pode fazer com que busque os proprietarios com a avalicao maior que a media, assim torna a consulta correlacionada.
 
 -- Selecionar para cada usuário, nomedelogin, e caso já tenha feito alguma aula mostra a aula feita e ordenar por preço de aula,
 -- além de mostrar a forma de pagamento da aula, e caso seja por cartão, mostrar o numero do cartao.
@@ -49,3 +50,5 @@
     
 -- Listar o CPF, nome de login e avaliação dos usuários que estão envolvidos em um aluguel ativo no momento, isto é, data_emprestimo < data atual < data_devolução.
     -- UNION e MINUS? ( não tenho certeza se é o único jeito de resolver)
+    
+
