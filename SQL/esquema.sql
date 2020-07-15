@@ -162,10 +162,12 @@ CREATE TABLE AULA(
     aluno VARCHAR2(40) NOT NULL,
 
     -- Não será possível apagar um usuário que participou de alguma aula.
-    CONSTRAINT FK_AULA_PROF FOREIGN KEY (professor) REFERENCES PROFESSOR(usuario),
     CONSTRAINT FK_AULA_ALUNO FOREIGN KEY (aluno) REFERENCES ALUNO(usuario),
 
     CONSTRAINT PK_AULA PRIMARY KEY (professor, data_aula),
+
+    tipo_instrumento VARCHAR2(30) NOT NULL,
+    CONSTRAINT FK_AULA_INST_TOCADOS FOREIGN KEY (professor, tipo_instrumento) REFERENCES INSTRUMENTOS_TOCADOS(professor, tipo_instrumento)
 
     local VARCHAR2(100) NOT NULL,
     duracao NUMBER(2) DEFAULT 1 NOT NULL,
@@ -173,8 +175,6 @@ CREATE TABLE AULA(
     valor NUMBER NOT NULL,
     CONSTRAINT VALOR_VALIDO CHECK(valor >= 0),
 
-    tipo_instrumento VARCHAR2(30) NOT NULL,
-    CONSTRAINT FK_AULA_TIPO_INST FOREIGN KEY (tipo_instrumento) REFERENCES CLASSIFICACAO_INSTRUMENTO(TIPO) ON DELETE SET NULL,
 
     forma_pagamento VARCHAR2(10)  NOT NULL,
     CONSTRAINT CHECK_FORMA_PAGAMENTO CHECK(forma_pagamento IN ('GRATUITO', 'BOLETO', 'CARTAO', 'DINHEIRO'))
