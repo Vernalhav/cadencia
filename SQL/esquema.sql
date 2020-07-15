@@ -1,6 +1,4 @@
 
--- MEGA TODO: determinar ON DELETE das FKs! CTRL+F "FK_"
-
 CREATE TABLE USUARIO(
     nome_login VARCHAR2(40) PRIMARY KEY,
 
@@ -8,8 +6,8 @@ CREATE TABLE USUARIO(
     CONSTRAINT UNIQUE_CPF UNIQUE(CPF),
     CONSTRAINT CK_CPF CHECK(REGEXP_LIKE(CPF, '[0-9]{3}\.[0-9]{3}\.[0-9]{3}\-[0-9]{2}')),
 
-    nome VARCHAR2(100),
-    senha VARCHAR2(40),
+    nome VARCHAR2(100) NOT NULL,
+    senha VARCHAR2(40) NOT NULL,
 
     cidade VARCHAR2(30) NOT NULL,
     bairro VARCHAR2(30) NOT NULL,
@@ -118,7 +116,7 @@ CREATE TABLE LOCATARIO(
     avaliacao NUMBER(2, 1) DEFAULT 5 NOT NULL,
     CONSTRAINT AVALIACAO_VALIDA_LOCAT CHECK(0 <= avaliacao AND avaliacao <= 5),
 
-    n_alugueis NUMBER(10) DEFAULT 0 NOT NULL    
+    n_alugueis NUMBER(10) DEFAULT 1 NOT NULL    
 );
 
 
@@ -170,7 +168,7 @@ CREATE TABLE AULA(
     CONSTRAINT PK_AULA PRIMARY KEY (professor, data_aula),
 
     local VARCHAR2(100) NOT NULL,
-    duracao NUMBER(2) DEFAULT 1 NOT NULL ,
+    duracao NUMBER(2) DEFAULT 1 NOT NULL,
 
     valor NUMBER NOT NULL,
     CONSTRAINT VALOR_VALIDO CHECK(valor >= 0),
