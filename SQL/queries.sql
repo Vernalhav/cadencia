@@ -51,4 +51,5 @@
 -- Listar o CPF, nome de login e avaliação dos usuários que estão envolvidos em um aluguel ativo no momento, isto é, data_emprestimo < data atual < data_devolução.
     -- UNION e MINUS? ( não tenho certeza se é o único jeito de resolver)
     
-
+-- Buscar os eventos que venderam menos ingressos que a média dos ingressos vendidos dos eventos que ocorreram no mesmo lugar.
+    -- Group By, aninhada não-correlacionada
