@@ -176,8 +176,14 @@ INSERT INTO EVENTO (id_evento, data, lugar, organizador, lotacao, descricao) VAL
  
  -- DADO TIPO_INGRESSO
 INSERT INTO TIPO_INGRESSO (tipo, id_evento, total, preco, qt_disponiveis) VALUES ('PISTA', 1, 20, 50, 19);
-INSERT INTO TIPO_INGRESSO (tipo, id_evento, total, preco, qt_disponiveis) VALUES ('PISTA', 2, 10, 10, 9);
+INSERT INTO TIPO_INGRESSO (tipo, id_evento, total, preco, qt_disponiveis) VALUES ('PISTA', 2, 5, 10, 4);
+INSERT INTO TIPO_INGRESSO (tipo, id_evento, total, preco, qt_disponiveis) VALUES ('AMIGO', 2, 5, 5, 0);
 
  -- DADO INGRESSO
 INSERT INTO INGRESSO (codigo_barras, usuario, tipo_ingresso, id_evento, forma_pagamento) VALUES (568462789561, 'marcelo.almeida', 'PISTA', 1, 'BOLETO');
 INSERT INTO INGRESSO (codigo_barras, usuario, tipo_ingresso, id_evento, forma_pagamento) VALUES (688462789562, 'ana.sant', 'PISTA', 2, 'BOLETO');
+INSERT INTO INGRESSO (codigo_barras, usuario, tipo_ingresso, id_evento, forma_pagamento) VALUES (138462789562, 'mister_toby', 'AMIGO', 2, 'DINHEIRO');
+INSERT INTO INGRESSO (codigo_barras, usuario, tipo_ingresso, id_evento, forma_pagamento) VALUES (148462789562, 'mister_toby', 'AMIGO', 2, 'DINHEIRO');
+INSERT INTO INGRESSO (codigo_barras, usuario, tipo_ingresso, id_evento, forma_pagamento) VALUES (128462789562, 'mister_toby', 'AMIGO', 2, 'DINHEIRO');
+INSERT INTO INGRESSO (codigo_barras, usuario, tipo_ingresso, id_evento, forma_pagamento) VALUES (158462789562, 'mister_toby', 'AMIGO', 2, 'DINHEIRO');
+INSERT INTO INGRESSO (codigo_barras, usuario, tipo_ingresso, id_evento, forma_pagamento) VALUES (147462789562, 'mister_toby', 'AMIGO', 2, 'DINHEIRO');
