@@ -41,4 +41,8 @@
 -- e sub ordenado pela forma de pagamento.
 
 -- Listar os alunos que já tiveram aula com um professor com 5 ou mais denuncias
-    -- JOIN/Aninhada
+    -- JOIN/Aninhada não-correlacionada
+
+-- Listar os proprietários que tiveram uma avaliação melhor que a média dos proprietários da sua cidade.
+    -- Consulta aninhada correlacionada.
+    -- pode aumentar a complexidade fazendo com que só considere a avaliação dos últimos 30 dias, assim adicionando uma junção e group by.
