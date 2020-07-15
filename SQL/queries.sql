@@ -33,3 +33,9 @@
 -- Dado uma classificação de um instrmento, listar o(s) proprietário(s) com maior média de avaliação
 -- dessa classificação. (Ex: o proprietário com o maior média de avaliações de instrumentos de cordas)
 
+-- Selecionar para cada usuário, nomedelogin, e caso já tenha feito alguma aula mostra a aula feita e ordenar por preço de aula,
+-- além de mostrar a forma de pagamento da aula, e caso seja por cartão, mostrar o numero do cartao.
+
+-- Selecionar, dado um organizador, a soma de valor em dinheiro de todos os ingressos que ele vendeu, separado pela forma de
+-- pagamento e pelo evento. Deve ser mostrado a forma de pagamento e o nome do evento que pertence o valor, ordenado pelo nome do evento
+-- e sub ordenado pela forma de pagamento.
