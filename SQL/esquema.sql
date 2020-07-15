@@ -64,7 +64,7 @@ CREATE TABLE CONVERSA(
     CONSTRAINT FK_USER2 FOREIGN KEY (usuario2) REFERENCES USUARIO(nome_login) ON DELETE CASCADE,
 
     -- Também remove a possibilidade de usuario1 = usuario2
-    CONSTRAINT CHAVE_ALFABETICA CHECK(usuario1 < usuario2),  -- TODO: comparação direta?
+    CONSTRAINT CHAVE_ALFABETICA CHECK(usuario1 < usuario2),
     CONSTRAINT PK_CONVERSA PRIMARY KEY (usuario1, usuario2),
 
     arquivo_conversa VARCHAR2(60) NOT NULL  -- TODO: como funciona arquivo/referencia em banco?
