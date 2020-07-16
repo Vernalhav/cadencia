@@ -186,7 +186,7 @@ CREATE TABLE INSTRUMENTO(
 
     proprietario VARCHAR2(40),      -- Atributo "usuario" do MR
     
-    disponivel CHAR(1) NOT NULL,    -- Atributo "disponibilidade" do MR
+    disponivel CHAR(1) NOT NULL DEFAULT 'Y',    -- Atributo "disponibilidade" do MR
     tipo VARCHAR2(30) NOT NULL,
     
     CONSTRAINT CHECK_DISPONIVEL CHECK( disponivel IN ('Y','N')),
@@ -194,8 +194,6 @@ CREATE TABLE INSTRUMENTO(
 
     CONSTRAINT PK_INSTRUMENTO PRIMARY KEY (nome, proprietario),
     CONSTRAINT FK_INST_TIPO FOREIGN KEY (tipo) REFERENCES CLASSIFICACAO_INSTRUMENTO(tipo) ON DELETE SET NULL
-
-    
 );
 
 
@@ -216,8 +214,8 @@ CREATE TABLE ALUGUEL(
 
     CONSTRAINT PK_AULGUEL PRIMARY KEY (instrumento_dono, instrumento_nome, data_emprestimo),
 
-    avaliacao_prop NUMBER(2, 1) NOT NULL,
-    avaliacao_locatario NUMBER(2, 1) NOT NULL,
+    avaliacao_prop NUMBER(2, 1) NOT NULL,       -- Avaliação do locatário para o proprietário
+    avaliacao_locatario NUMBER(2, 1) NOT NULL,  -- Avaliação do proprietário para o locatário
     CONSTRAINT AVALIACAO_ALUGUEL_PROP CHECK(0 <= avaliacao_prop AND avaliacao_prop <= 5),
     CONSTRAINT AVALIACAO_ALUGUEL_LOCAT CHECK(0 <= avaliacao_locatario AND avaliacao_locatario <= 5),
 

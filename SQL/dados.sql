@@ -52,9 +52,9 @@ INSERT INTO ALUNO (usuario) VALUES ('marcos085');
 INSERT INTO ALUNO (usuario) VALUES ('mister_toby');
 
  -- DADOS PROFESSOR
-INSERT INTO PROFESSOR (usuario, hora_aula, n_aulas, descricao) VALUES ('dri_zinha', 20.5, 1,'Dou aula a 10 anos, paciente com iniciantes. Também dou aula para pessoas já avançadas que querem aperfeiçoar a sua técnica.');
+INSERT INTO PROFESSOR (usuario, hora_aula, n_aulas, descricao) VALUES ('dri_zinha', 20.5, 1,'Dou aula a 10 anos, paciente com iniciantes. Tambem dou aula para pessoas já avançadas que querem aperfeiçoar a sua técnica.');
 INSERT INTO PROFESSOR (usuario, hora_aula, n_aulas, descricao) VALUES ('tgamer', 30.0, 1, 'Aula completa para iniciantes no assunto.');
-INSERT INTO PROFESSOR (usuario, hora_aula, descricao) VALUES ('mister_toby', 50.0, 'Sou virtuoso no teclado. Não dou aula para iniciantes.');
+INSERT INTO PROFESSOR (usuario, hora_aula, descricao) VALUES ('mister_toby', 50.0, 'Sou virtuoso no teclado. Nao dou aula para iniciantes.');
 
  -- DADO PROPRIETARIO
 INSERT INTO PROPRIETARIO (usuario, avaliacao, n_emprestimos) VALUES ('shaolin.matador', 2.5, 2);
@@ -103,7 +103,6 @@ INSERT INTO HORA_DISP (professor, dia_semana, hora) VALUES ('mister_toby', 'QUAR
 INSERT INTO HORA_DISP (professor, dia_semana, hora) VALUES ('mister_toby', 'QUINTA', 8);
 INSERT INTO HORA_DISP (professor, dia_semana, hora) VALUES ('mister_toby', 'QUINTA', 9);
 INSERT INTO HORA_DISP (professor, dia_semana, hora) VALUES ('mister_toby', 'QUINTA', 10);
-INSERT INTO HORA_DISP (professor, dia_semana, hora) VALUES ('mister_toby', 'SEXTA', 11);
 INSERT INTO HORA_DISP (professor, dia_semana, hora) VALUES ('mister_toby', 'SEXTA', 8);
 INSERT INTO HORA_DISP (professor, dia_semana, hora) VALUES ('mister_toby', 'SEXTA', 9);
 INSERT INTO HORA_DISP (professor, dia_semana, hora) VALUES ('mister_toby', 'SEXTA', 10);
@@ -131,7 +130,6 @@ INSERT INTO CLASSIFICACAO_INSTRUMENTO (tipo, classificacao) VALUES ('TROMPETE','
 INSERT INTO CLASSIFICACAO_INSTRUMENTO (tipo, classificacao) VALUES ('UKULELE','CORDAS');
 INSERT INTO CLASSIFICACAO_INSTRUMENTO (tipo, classificacao) VALUES ('CAJON','PERCUSSAO');
 INSERT INTO CLASSIFICACAO_INSTRUMENTO (tipo, classificacao) VALUES ('KAZOO','SOPRO');
-INSERT INTO CLASSIFICACAO_INSTRUMENTO (tipo, classificacao) VALUES ('GAITA','SOPRO');
 INSERT INTO CLASSIFICACAO_INSTRUMENTO (tipo, classificacao) VALUES ('HURDY GURDY','CORDAS');
 INSERT INTO CLASSIFICACAO_INSTRUMENTO (tipo, classificacao) VALUES ('CONTRABAIXO','CORDAS');
 INSERT INTO CLASSIFICACAO_INSTRUMENTO (tipo, classificacao) VALUES ('SINTETIZADOR','DIGITAL');
@@ -156,8 +154,9 @@ INSERT INTO AULA (data_aula, professor, aluno, local, duracao, valor, tipo_instr
 INSERT INTO INSTRUMENTO (nome, proprietario, disponivel, tipo) VALUES ('Clarinete Do Matador', 'shaolin.matador', 'Y', 'CLARINETE');
 INSERT INTO INSTRUMENTO (nome, proprietario, disponivel, tipo) VALUES ('Sax Do Matador', 'shaolin.matador', 'N', 'SAXOFONE');
 INSERT INTO INSTRUMENTO (nome, proprietario, disponivel, tipo) VALUES ('Baixo Do flavin', 'flavin_do_peneu', 'Y', 'BAIXO');
-INSERT INTO INSTRUMENTO (nome, proprietario, tipo) VALUES ('Piano Steinway D-274 Ouro-II', 'mister_toby', 'PIANO');
-INSERT INTO INSTRUMENTO (nome, proprietario, tipo) VALUES ('Sintetizador roubado do Daft Punk', 'mister_toby', 'SINTETIZADOR');
+INSERT INTO INSTRUMENTO (nome, proprietario, disponivel, tipo) VALUES ('Piano Steinway D-274 Ouro-II', 'mister_toby', 'Y', 'PIANO');
+INSERT INTO INSTRUMENTO (nome, proprietario, disponivel, tipo) VALUES ('Sintetizador roubado do Daft Punk', 'mister_toby', 'Y', 'SINTETIZADOR');
+
 
  -- DADO ALUGUEL
 INSERT INTO ALUGUEL (instrumento_nome, instrumento_dono, locatario, data_emprestimo, data_devolucao, avaliacao_prop, avaliacao_locatario, forma_pagamento) VALUES ('Clarinete Do Matador', 'shaolin.matador', 'marcos085', TO_DATE('2019/04/04 17:05:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2019/04/09 17:05:00', 'YYYY-MM-DD HH24:MI:SS'), 3.0, 5.0, 'DINHEIRO');
