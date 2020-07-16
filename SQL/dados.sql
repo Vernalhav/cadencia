@@ -52,9 +52,9 @@ INSERT INTO ALUNO (usuario) VALUES ('marcos085');
 INSERT INTO ALUNO (usuario) VALUES ('mister_toby');
 
  -- DADOS PROFESSOR
-INSERT INTO PROFESSOR (usuario, hora_aula, n_aulas, descricao) VALUES ('dri_zinha', 20.5, 1,'Dou aula a 10 anos, paciente com iniciantes. Tambem dou aula para pessoas já avançadas que querem aperfeiçoar a sua técnica.');
-INSERT INTO PROFESSOR (usuario, hora_aula, n_aulas, descricao) VALUES ('tgamer', 30.0, 1, 'Aula completa para iniciantes no assunto.');
-INSERT INTO PROFESSOR (usuario, hora_aula, descricao) VALUES ('mister_toby', 50.0, 'Sou virtuoso no teclado. Nao dou aula para iniciantes.');
+INSERT INTO PROFESSOR (usuario, hora_aula, n_aulas, descricao) VALUES ('dri_zinha', 20.5, 1,'Dou aula a 10 anos, paciente com iniciantes. Também dou aula para pessoas já avançadas que querem aperfeiçoar a sua técnica.');
+INSERT INTO PROFESSOR (usuario, hora_aula, n_aulas, descricao) VALUES ('tgamer', 30.0, 3, 'Aula completa para iniciantes no assunto.');
+INSERT INTO PROFESSOR (usuario, hora_aula, descricao) VALUES ('mister_toby', 50.0, 'Sou virtuoso no teclado. Não dou aula para iniciantes.');
 
  -- DADO PROPRIETARIO
 INSERT INTO PROPRIETARIO (usuario, avaliacao, n_emprestimos) VALUES ('shaolin.matador', 2.5, 2);
@@ -106,7 +106,6 @@ INSERT INTO HORA_DISP (professor, dia_semana, hora) VALUES ('mister_toby', 'QUIN
 INSERT INTO HORA_DISP (professor, dia_semana, hora) VALUES ('mister_toby', 'SEXTA', 8);
 INSERT INTO HORA_DISP (professor, dia_semana, hora) VALUES ('mister_toby', 'SEXTA', 9);
 INSERT INTO HORA_DISP (professor, dia_semana, hora) VALUES ('mister_toby', 'SEXTA', 10);
-INSERT INTO HORA_DISP (professor, dia_semana, hora) VALUES ('mister_toby', 'SEXTA', 11);
 
  -- DADOS CLASSIFICACAO_INSTRUMENTO
 INSERT INTO CLASSIFICACAO_INSTRUMENTO (tipo, classificacao) VALUES ('BAIXO','CORDAS');
@@ -145,7 +144,7 @@ INSERT INTO INSTRUMENTOS_TOCADOS (professor, tipo_instrumento) VALUES ('mister_t
 INSERT INTO INSTRUMENTOS_TOCADOS (professor, tipo_instrumento) VALUES ('mister_toby', 'SINTETIZADOR');
 
  -- DADO AULA
-INSERT INTO AULA (data_aula, professor, aluno, local, duracao, valor, tipo_instrumento, forma_pagamento) VALUES (TO_DATE('2019/06/15 14:00:00', 'YYYY-MM-DD HH24:MI:SS'),'dri_zinha', 'ju.pereira', 'Centro Da Cultural da Penha', 1, 20.5, 'BAIXO', 'DINHEIRO');
+INSERT INTO AULA (data_aula, professor, aluno, local, duracao, valor, tipo_instrumento, forma_pagamento) VALUES (TO_DATE('2019/06/15 14:00:00', 'YYYY-MM-DD HH24:MI:SS'),'dri_zinha', 'ju.pereira', 'Centro Cultural da Penha', 1, 20.5, 'BAIXO', 'DINHEIRO');
 INSERT INTO AULA (data_aula, professor, aluno, local, duracao, valor, tipo_instrumento, forma_pagamento) VALUES (TO_DATE('2019/06/23 10:00:00', 'YYYY-MM-DD HH24:MI:SS'),'tgamer', 'marcos085', 'Centro Da Cultural do Games', 1, 30.0, 'CLARINETE', 'CARTAO');
 INSERT INTO AULA (data_aula, professor, aluno, local, duracao, valor, tipo_instrumento, forma_pagamento) VALUES (TO_DATE('2019/06/30 10:00:00', 'YYYY-MM-DD HH24:MI:SS'),'tgamer', 'marcos085', 'Centro Da Cultural do Games', 1, 30.0, 'CLARINETE', 'CARTAO');
 INSERT INTO AULA (data_aula, professor, aluno, local, duracao, valor, tipo_instrumento, forma_pagamento) VALUES (TO_DATE('2020/06/30 10:00:00', 'YYYY-MM-DD HH24:MI:SS'),'tgamer', 'mister_toby', 'Centro Da Cultural do Games', 1, 30.0, 'CLARINETE', 'CARTAO');
@@ -154,9 +153,8 @@ INSERT INTO AULA (data_aula, professor, aluno, local, duracao, valor, tipo_instr
 INSERT INTO INSTRUMENTO (nome, proprietario, disponivel, tipo) VALUES ('Clarinete Do Matador', 'shaolin.matador', 'Y', 'CLARINETE');
 INSERT INTO INSTRUMENTO (nome, proprietario, disponivel, tipo) VALUES ('Sax Do Matador', 'shaolin.matador', 'N', 'SAXOFONE');
 INSERT INTO INSTRUMENTO (nome, proprietario, disponivel, tipo) VALUES ('Baixo Do flavin', 'flavin_do_peneu', 'Y', 'BAIXO');
-INSERT INTO INSTRUMENTO (nome, proprietario, disponivel, tipo) VALUES ('Piano Steinway D-274 Ouro-II', 'mister_toby', 'Y', 'PIANO');
+INSERT INTO INSTRUMENTO (nome, proprietario, disponivel, tipo) VALUES ('Piano Steinway D-274 Ouro-II', 'mister_toby','Y', 'PIANO');
 INSERT INTO INSTRUMENTO (nome, proprietario, disponivel, tipo) VALUES ('Sintetizador roubado do Daft Punk', 'mister_toby', 'Y', 'SINTETIZADOR');
-
 
  -- DADO ALUGUEL
 INSERT INTO ALUGUEL (instrumento_nome, instrumento_dono, locatario, data_emprestimo, data_devolucao, avaliacao_prop, avaliacao_locatario, forma_pagamento) VALUES ('Clarinete Do Matador', 'shaolin.matador', 'marcos085', TO_DATE('2019/04/04 17:05:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2019/04/09 17:05:00', 'YYYY-MM-DD HH24:MI:SS'), 3.0, 5.0, 'DINHEIRO');
@@ -177,8 +175,14 @@ INSERT INTO EVENTO (id_evento, data, lugar, organizador, lotacao, descricao) VAL
  
  -- DADO TIPO_INGRESSO
 INSERT INTO TIPO_INGRESSO (tipo, id_evento, total, preco, qt_disponiveis) VALUES ('PISTA', 1, 20, 50, 19);
-INSERT INTO TIPO_INGRESSO (tipo, id_evento, total, preco, qt_disponiveis) VALUES ('PISTA', 2, 10, 10, 9);
+INSERT INTO TIPO_INGRESSO (tipo, id_evento, total, preco, qt_disponiveis) VALUES ('PISTA', 2, 5, 10, 4);
+INSERT INTO TIPO_INGRESSO (tipo, id_evento, total, preco, qt_disponiveis) VALUES ('AMIGO', 2, 5, 5, 0);
 
  -- DADO INGRESSO
 INSERT INTO INGRESSO (codigo_barras, usuario, tipo_ingresso, id_evento, forma_pagamento) VALUES (568462789561, 'marcelo.almeida', 'PISTA', 1, 'BOLETO');
 INSERT INTO INGRESSO (codigo_barras, usuario, tipo_ingresso, id_evento, forma_pagamento) VALUES (688462789562, 'ana.sant', 'PISTA', 2, 'BOLETO');
+INSERT INTO INGRESSO (codigo_barras, usuario, tipo_ingresso, id_evento, forma_pagamento) VALUES (138462789562, 'mister_toby', 'AMIGO', 2, 'DINHEIRO');
+INSERT INTO INGRESSO (codigo_barras, usuario, tipo_ingresso, id_evento, forma_pagamento) VALUES (148462789562, 'mister_toby', 'AMIGO', 2, 'DINHEIRO');
+INSERT INTO INGRESSO (codigo_barras, usuario, tipo_ingresso, id_evento, forma_pagamento) VALUES (128462789562, 'mister_toby', 'AMIGO', 2, 'DINHEIRO');
+INSERT INTO INGRESSO (codigo_barras, usuario, tipo_ingresso, id_evento, forma_pagamento) VALUES (158462789562, 'mister_toby', 'AMIGO', 2, 'DINHEIRO');
+INSERT INTO INGRESSO (codigo_barras, usuario, tipo_ingresso, id_evento, forma_pagamento) VALUES (147462789562, 'mister_toby', 'AMIGO', 2, 'DINHEIRO');
