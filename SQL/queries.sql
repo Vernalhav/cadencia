@@ -1,7 +1,7 @@
 
 -- 01) Listar todos os professores que ensinam todos os instrumentos de uma categoria
 -- e têm em média X horas livres por dia
-SELECT PROFESSOR, COUNT(*) FROM INSTRUMENTOS_TOCADOS 
+SELECT PROFESSOR FROM INSTRUMENTOS_TOCADOS 
     JOIN ( SELECT TIPO FROM CLASSIFICACAO_INSTRUMENTO WHERE CLASSIFICACAO = 'DIGITAL') TIPO_INST_CLAS 
     ON TIPO_INST_CLAS.TIPO = INSTRUMENTOS_TOCADOS.TIPO_INSTRUMENTO
     GROUP BY PROFESSOR
@@ -24,7 +24,7 @@ SELECT USUARIO_NAO_DEN.USUARIO AS USUARIO FROM ((SELECT NOME_LOGIN AS USUARIO FR
     UNION (SELECT USUARIO AS USUARIO FROM PROPRIETARIO)) PROF_OU_PROP ON USUARIO_NAO_DEN.USUARIO = PROF_OU_PROP.USUARIO;
 
 
--- 04) Listar todos os eventos em ordem decrescente de lucro por venda de ingressos
+-- 04) Listar todos os eventos em ordem decrescente de lucro por faturamento
 SELECT e.id_evento, e.lugar, e.data, SUM(ti.preco) AS "FATURAMENTO" FROM evento e
         JOIN tipo_ingresso ti ON e.id_evento = ti.id_evento
         JOIN ingresso i ON ti.tipo = i.tipo_ingresso AND ti.id_evento = i.id_evento
@@ -61,11 +61,12 @@ SELECT EVENTO.ID_EVENTO, FORMA_PAGAMENTO, SUM(PRECO) AS VALOR FROM EVENTO
     JOIN TIPO_INGRESSO ON EVENTO.ID_EVENTO = TIPO_INGRESSO.ID_EVENTO
     JOIN INGRESSO ON INGRESSO.ID_EVENTO = TIPO_INGRESSO.ID_EVENTO AND INGRESSO.TIPO_INGRESSO = TIPO_INGRESSO.TIPO
     WHERE ORGANIZADOR = 'tgamer'
-    GROUP BY EVENTO.ID_EVENTO, FORMA_PAGAMENTO;
+    GROUP BY EVENTO.ID_EVENTO, FORMA_PAGAMENTO
+    ORDER BY EVENTO.ID_EVENTO, FORMA_PAGAMENTO;
     
 
 -- 08) Listar os alunos que já tiveram aula com um professor com 5 ou mais denuncias
-SELECT DISTINCT * FROM ALUNO JOIN AULA ON ALUNO.USUARIO = AULA.ALUNO 
+SELECT DISTINCT USUARIO FROM ALUNO JOIN AULA ON ALUNO.USUARIO = AULA.ALUNO 
     WHERE AULA.PROFESSOR IN (
         SELECT DENUNCIADO AS Professor FROM DENUNCIA
             GROUP BY DENUNCIADO
@@ -75,10 +76,10 @@ SELECT DISTINCT * FROM ALUNO JOIN AULA ON ALUNO.USUARIO = AULA.ALUNO
 -- 09) Listar o CPF, nome de login e avaliação dos usuários que estão envolvidos em um aluguel ativo no momento, isto é, data_emprestimo < data atual < data_devolução.
 SELECT DISTINCT NOME_LOGIN, CPF, NOME FROM USUARIO
     JOIN ALUGUEL ON USUARIO.NOME_LOGIN = ALUGUEL.LOCATARIO OR USUARIO.NOME_LOGIN = ALUGUEL.INSTRUMENTO_DONO
-    WHERE ALUGUEL.DATA_EMPRESTIMO < '06/04/19' AND '06/04/19' < DATA_DEVOLUCAO; 
+    WHERE ALUGUEL.DATA_EMPRESTIMO < SYSDATE AND SYSDATE < DATA_DEVOLUCAO; 
 
 
--- 10) Buscar os eventos que venderam menos ingressos que a média dos ingressos vendidos dos eventos que ocorreram no mesmo lugar.
+-- 10) Buscar os eventos que venderam mais ingressos que a média dos ingressos vendidos dos eventos que ocorreram no mesmo lugar.
 SELECT e.id_evento, e.data, e.lugar, i.NUMERO_INGRESSOS FROM evento e
     JOIN
         (SELECT ing.id_evento, COUNT(*) AS NUMERO_INGRESSOS FROM ingresso ing
@@ -87,4 +88,4 @@ SELECT e.id_evento, e.data, e.lugar, i.NUMERO_INGRESSOS FROM evento e
         (SELECT LUGAR, (COUNT(*)/COUNT(DISTINCT E2.ID_EVENTO)) AS NUMERO_MEDIO_INGRESSOS FROM EVENTO E2
                 JOIN INGRESSO ON E2.ID_EVENTO = INGRESSO.ID_EVENTO
             GROUP BY LUGAR) lmi ON e.lugar = lmi.lugar
-    WHERE i.NUMERO_INGRESSOS < lmi.NUMERO_MEDIO_INGRESSOS;
+    WHERE i.NUMERO_INGRESSOS > lmi.NUMERO_MEDIO_INGRESSOS;
