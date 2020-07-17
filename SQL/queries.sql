@@ -1,6 +1,5 @@
 
 -- 01) Listar todos os professores que ensinam todos os instrumentos de uma categoria
--- e têm em média X horas livres por dia
 SELECT PROFESSOR, COUNT(*) FROM INSTRUMENTOS_TOCADOS 
     JOIN ( SELECT TIPO FROM CLASSIFICACAO_INSTRUMENTO WHERE CLASSIFICACAO = 'DIGITAL') TIPO_INST_CLAS 
     ON TIPO_INST_CLAS.TIPO = INSTRUMENTOS_TOCADOS.TIPO_INSTRUMENTO
@@ -75,7 +74,7 @@ SELECT DISTINCT * FROM ALUNO JOIN AULA ON ALUNO.USUARIO = AULA.ALUNO
 -- 09) Listar o CPF, nome de login e avaliação dos usuários que estão envolvidos em um aluguel ativo no momento, isto é, data_emprestimo < data atual < data_devolução.
 SELECT DISTINCT NOME_LOGIN, CPF, NOME FROM USUARIO
     JOIN ALUGUEL ON USUARIO.NOME_LOGIN = ALUGUEL.LOCATARIO OR USUARIO.NOME_LOGIN = ALUGUEL.INSTRUMENTO_DONO
-    WHERE ALUGUEL.DATA_EMPRESTIMO < '06/04/19' AND '06/04/19' < DATA_DEVOLUCAO; 
+    WHERE ALUGUEL.DATA_EMPRESTIMO < SYSDATE AND SYSDATE < DATA_DEVOLUCAO; 
 
 
 -- 10) Buscar os eventos que venderam menos ingressos que a média dos ingressos vendidos dos eventos que ocorreram no mesmo lugar.
