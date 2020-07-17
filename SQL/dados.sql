@@ -37,7 +37,19 @@ INSERT INTO DENUNCIA (denunciado, autor, data, conteudo) VALUES ('tgamer', 'mist
 INSERT INTO DENUNCIA (denunciado, autor, data, conteudo) VALUES ('tgamer', 'dri_zinha', TO_TIMESTAMP('2020-02-15 13:11:25', 'YYYY-MM-DD HH24:MI:SS'), 'Aula muito ruim');
 
  -- DADOS CONVERSA
- -- TODO
+INSERT INTO CONVERSA (usuario1, usuario2, arquivo_conversa) VALUES ('tgamer', 'dri_zinha', './conversas/tgamer-dri_zinha.txt');
+INSERT INTO CONVERSA (usuario1, usuario2, arquivo_conversa) VALUES ('tgamer', 'flavin_do_peneu', './conversas/tgamer-flavin_do_peneu.txt');
+INSERT INTO CONVERSA (usuario1, usuario2, arquivo_conversa) VALUES ('tgamer', 'ana.sant', './conversas/tgamer-ana.sant.txt');
+INSERT INTO CONVERSA (usuario1, usuario2, arquivo_conversa) VALUES ('tgamer', 'marcos085', './conversas/tgamer-marcos085.txt');
+INSERT INTO CONVERSA (usuario1, usuario2, arquivo_conversa) VALUES ('tgamer', 'mister_toby', './conversas/tgamer-mister_toby.txt');
+INSERT INTO CONVERSA (usuario1, usuario2, arquivo_conversa) VALUES ('dri_zinha', 'marcos085', './conversas/dri_zinha-marcos085.txt');
+INSERT INTO CONVERSA (usuario1, usuario2, arquivo_conversa) VALUES ('dri_zinha', 'ana.sant', './conversas/dri_zinha-ana.sant.txt');
+INSERT INTO CONVERSA (usuario1, usuario2, arquivo_conversa) VALUES ('dri_zinha', 'flavin_do_peneu', './conversas/dri_zinha-flavin_do_peneu.txt');
+INSERT INTO CONVERSA (usuario1, usuario2, arquivo_conversa) VALUES ('dri_zinha', 'ju.pereira', './conversas/dri_zinha-ju.pereira.txt');
+INSERT INTO CONVERSA (usuario1, usuario2, arquivo_conversa) VALUES ('flavin_do_peneu', 'ju.pereira', './conversas/flavin_do_peneu-ju.pereira.txt');
+INSERT INTO CONVERSA (usuario1, usuario2, arquivo_conversa) VALUES ('flavin_do_peneu', 'marcos085', './conversas/flavin_do_peneu-marcos085.txt');
+INSERT INTO CONVERSA (usuario1, usuario2, arquivo_conversa) VALUES ('flavin_do_peneu', 'mister_toby', './conversas/flavin_do_peneu-mister_toby.txt');
+INSERT INTO CONVERSA (usuario1, usuario2, arquivo_conversa) VALUES ('flavin_do_peneu', 'ana.sant', './conversas/flavin_do_peneu-ana.sant.txt');
 
  -- DADOS TIPO_USUARIO
 INSERT INTO TIPO_USUARIO (usuario, tipo) VALUES ('dri_zinha', 'PROFESSOR');
@@ -202,7 +214,24 @@ INSERT INTO EVENTO (id_evento, data, lugar, organizador, lotacao, descricao) VAL
 INSERT INTO EVENTO (id_evento, data, lugar, organizador, lotacao, descricao) VALUES (6, TO_DATE('2020/03/10 12:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Bandejao', 'tgamer', 10, 'Venha comer enquanto escuta uma boa musica.');
 
  -- DADO FOTO
- -- TODO
+INSERT INTO FOTO (id_evento, url) VALUES (1,'https://asset4.zankyou.com/images/wervice-card-big/d33/b90e/1050/800/w/577343/-/1495543847.jpg');
+INSERT INTO FOTO (id_evento, url) VALUES (1,'https://media.discordapp.net/attachments/572967144774434849/733757856721141971/unknown.png');
+INSERT INTO FOTO (id_evento, url) VALUES (1,'https://media.discordapp.net/attachments/572967144774434849/733757774407925821/375353_112068815577282_1836614541_n.png');
+INSERT INTO FOTO (id_evento, url) VALUES (2,'https://s3-sa-east-1.amazonaws.com/images-clients.agendaopen.com/f2661271bb7942956ef042329a8ce9c7_3.jpg');
+INSERT INTO FOTO (id_evento, url) VALUES (2,'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgpWZo1SOrK0vCpah2NhCobtMOj10Uv5WQfQ&usqp=CAU');
+INSERT INTO FOTO (id_evento, url) VALUES (2,'https://r-cf.bstatic.com/images/hotel/max1024x768/233/233370592.jpg');
+INSERT INTO FOTO (id_evento, url) VALUES (3,'https://www.casadeeventos.com.br/assets/images/casadeventos-15anos-mickaela2018-19-1280x821.jpg');
+INSERT INTO FOTO (id_evento, url) VALUES (3,'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRGr0UK-L62Zf4oVvsb4yVyWTYtzfhKFZtTbA&usqp=CAU');
+INSERT INTO FOTO (id_evento, url) VALUES (3,'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRP8jNoy1MnPTSpq4yFQBt6JHGiWbYHRZvxxQ&usqp=CAU');
+INSERT INTO FOTO (id_evento, url) VALUES (4,'https://cdn0.casamentos.com.br/emp/fotos/4/6/3/6/1619516-607394042725918-967051010222401364-n_13_164636.jpg');
+INSERT INTO FOTO (id_evento, url) VALUES (4,'https://d1e676vce0x2at.cloudfront.net/uploads/post/image/8624/main_204736_itatiaia-tulio-barros.jpg');
+INSERT INTO FOTO (id_evento, url) VALUES (4,'https://orlanoticias.com.br/wp-content/uploads/2020/01/WhatsApp-Image-2020-01-14-at-10.49.24-360x240.jpeg');
+INSERT INTO FOTO (id_evento, url) VALUES (5,'https://www.ouroeste.sp.gov.br/storage/conteudo/grande_3c531b3192f53913fb9c2926ff67368610371391-788564854520748-1173579690466998270-n.jpg');
+INSERT INTO FOTO (id_evento, url) VALUES (5,'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTokRTqUee7_sjMKcVCKtoHZKPNKmFE5ORBCw&usqp=CAU');
+INSERT INTO FOTO (id_evento, url) VALUES (5,'https://static.portaldacidade.com/unsafe/1150x767/https://s3.amazonaws.com/cruzeirodooeste.portaldacidade.com/img/news/2019-08/evento-na-praca-coroa-o-dia-do-pioneiro-em-cruzeiro-do-oeste-5d48a2c587edd.jpeg');
+INSERT INTO FOTO (id_evento, url) VALUES (6,'https://mczalt.files.wordpress.com/2017/04/pessoas-dancando-na-balada-shutter.jpg?w=736');
+INSERT INTO FOTO (id_evento, url) VALUES (6,'https://blogjatefalei.files.wordpress.com/2014/11/na-balada.png');
+INSERT INTO FOTO (id_evento, url) VALUES (6,'https://projetosespeciais.com/wp-content/uploads/2018/03/Balada.jpg');
  
  -- DADO TIPO_INGRESSO
 INSERT INTO TIPO_INGRESSO (tipo, id_evento, total, preco, qt_disponiveis) VALUES ('PISTA', 1, 20, 50, 19);
