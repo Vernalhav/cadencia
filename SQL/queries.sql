@@ -54,7 +54,7 @@ SELECT U.nome_login, A.data_aula, P.nome as PROFESSOR, A.valor, A.forma_pagament
 
 
 -- 07) Selecionar, dado um organizador, a soma de valor em dinheiro de todos os ingressos que ele vendeu, separado pela forma de
--- pagamento e pelo evento. Deve ser mostrado a forma de pagamento e o nome do evento que pertence o valor, ordenado pelo nome do evento
+-- pagamento e pelo evento. Deve ser mostrado a forma de pagamento e o ID do evento que pertence o valor, ordenado pelo ID do evento
 -- e sub ordenado pela forma de pagamento.
 SELECT EVENTO.ID_EVENTO, FORMA_PAGAMENTO, SUM(PRECO) AS VALOR FROM EVENTO 
     JOIN TIPO_INGRESSO ON EVENTO.ID_EVENTO = TIPO_INGRESSO.ID_EVENTO
@@ -83,8 +83,7 @@ SELECT e.id_evento, e.data, e.lugar, i.NUMERO_INGRESSOS FROM evento e
     JOIN
         (SELECT ing.id_evento, COUNT(*) AS NUMERO_INGRESSOS FROM ingresso ing
             GROUP BY ing.id_evento) i ON e.id_evento = i.id_evento
-    JOIN
-        (SELECT LUGAR, (COUNT(*)/COUNT(DISTINCT E2.ID_EVENTO)) AS NUMERO_MEDIO_INGRESSOS FROM EVENTO E2
-                JOIN INGRESSO ON E2.ID_EVENTO = INGRESSO.ID_EVENTO
-            GROUP BY LUGAR) lmi ON e.lugar = lmi.lugar
-    WHERE i.NUMERO_INGRESSOS > lmi.NUMERO_MEDIO_INGRESSOS;
+         lmi ON e.lugar = lmi.lugar
+    WHERE i.NUMERO_INGRESSOS > (SELECT (COUNT(*)/COUNT(DISTINCT E2.ID_EVENTO)) AS NUMERO_MEDIO_INGRESSOS FROM EVENTO E2
+                JOIN INGRESSO ON E2.ID_EVENTO = INGRESSO.ID_EVENTO WHERE e.LUGAR = E2.LUGAR
+);
