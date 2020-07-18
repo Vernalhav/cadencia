@@ -309,8 +309,8 @@ def main():
         print("Opcoes Para acesso ao banco:")
         print("     1 - Inserir Tipo de Instrumento.")
         print("     2 - Inserir um novo Instrumento que um Professor Toca.")
-        print("     3 - Buscar Professores.")
-        print("     4 - Busca os professores que toquem todos os tipos de instrumento de uma determinada classificacao")
+        print("     3 - Listar Professores.")
+        print("     4 - Lista os professores que tocam todos os tipos de instrumento de uma determinada classificacao")
         print("     5 - Sair")
         print("Insira o numero da opcao desejada.")
         while(not opcao_valida):
