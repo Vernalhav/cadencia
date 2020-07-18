@@ -14,7 +14,7 @@ pip install -r requirements.txt
 # RUN
 
 ```
-python conecta.py
+python main_bd.py
 ```
 
 Os comandos SQL da aplicação estão no arquivo banco.py
