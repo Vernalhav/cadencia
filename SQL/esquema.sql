@@ -1,3 +1,25 @@
+drop table USUARIO cascade constraints;
+drop table CONTA cascade constraints;
+drop table CARTAO cascade constraints;
+drop table DENUNCIA cascade constraints;
+drop table CONVERSA cascade constraints;
+drop table TIPO_USUARIO cascade constraints;
+drop table ALUNO cascade constraints;
+drop table PROFESSOR cascade constraints;
+drop table PROPRIETARIO cascade constraints;
+drop table LOCATARIO cascade constraints;
+drop table ORGANIZADOR cascade constraints;
+drop table HORA_DISP cascade constraints;
+drop table CLASSIFICACAO_INSTRUMENTO cascade constraints;
+drop table INSTRUMENTOS_TOCADOS cascade constraints;
+drop table AULA cascade constraints;
+drop table INSTRUMENTO cascade constraints;
+drop table ALUGUEL cascade constraints;
+drop table LUGAR cascade constraints;
+drop table EVENTO cascade constraints;
+drop table FOTO cascade constraints;
+drop table TIPO_INGRESSO cascade constraints;
+drop table INGRESSO cascade constraints;
 
 CREATE TABLE USUARIO(
     nome_login VARCHAR2(40) PRIMARY KEY,
@@ -186,7 +208,7 @@ CREATE TABLE INSTRUMENTO(
 
     proprietario VARCHAR2(40),      -- Atributo "usuario" do MR
     
-    disponivel CHAR(1) NOT NULL DEFAULT 'Y',    -- Atributo "disponibilidade" do MR
+    disponivel CHAR(1) DEFAULT 'Y' NOT NULL,    -- Atributo "disponibilidade" do MR
     tipo VARCHAR2(30) NOT NULL,
     
     CONSTRAINT CHECK_DISPONIVEL CHECK( disponivel IN ('Y','N')),
