@@ -1,5 +1,5 @@
 import cx_Oracle  
-import settings
+import config
 
 '''
 Esta funcao cria uma conexao com o banco de dados Oracle remoto, as informacoes sobre banco, como usuario e url, estao definidas em settings
