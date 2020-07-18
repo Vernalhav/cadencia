@@ -79,11 +79,9 @@ SELECT DISTINCT NOME_LOGIN, CPF, NOME FROM USUARIO
 
 
 -- 10) Buscar os eventos que venderam mais ingressos que a média dos ingressos vendidos dos eventos que ocorreram no mesmo lugar.
-SELECT e.id_evento, e.data, e.lugar, i.NUMERO_INGRESSOS FROM evento e
-    JOIN
-        (SELECT ing.id_evento, COUNT(*) AS NUMERO_INGRESSOS FROM ingresso ing
-            GROUP BY ing.id_evento) i ON e.id_evento = i.id_evento
-         lmi ON e.lugar = lmi.lugar
-    WHERE i.NUMERO_INGRESSOS > (SELECT (COUNT(*)/COUNT(DISTINCT E2.ID_EVENTO)) AS NUMERO_MEDIO_INGRESSOS FROM EVENTO E2
-                JOIN INGRESSO ON E2.ID_EVENTO = INGRESSO.ID_EVENTO WHERE e.LUGAR = E2.LUGAR
-);
+SELECT e.id_evento, e.data, e.lugar, i.NUMERO_INGRESSOS FROM evento e 
+    JOIN (SELECT ing.id_evento, COUNT(*) AS NUMERO_INGRESSOS FROM ingresso ing 
+    GROUP BY ing.id_evento) i ON e.id_evento = i.id_evento 
+    WHERE i.NUMERO_INGRESSOS >
+        (SELECT (COUNT(*)/COUNT(DISTINCT E2.ID_EVENTO)) AS NUMERO_MEDIO_INGRESSOS FROM EVENTO E2 
+        JOIN INGRESSO ON E2.ID_EVENTO = INGRESSO.ID_EVENTO WHERE e.LUGAR = E2.LUGAR );
