@@ -7,9 +7,9 @@ Esta funcao cria uma conexao com o banco de dados Oracle remoto, as informacoes 
     con - um objeto de conexao com o banco
 '''
 def create_connection():
-    dsnStr = cx_Oracle.makedsn(settings.DATABASE_URL, settings.DATABASE_URL_PORT, settings.DATABASE_SID)
+    dsnStr = cx_Oracle.makedsn(config.DATABASE_URL, config.DATABASE_URL_PORT, config.DATABASE_SID)
 
-    con = cx_Oracle.connect(user=settings.USER, password=settings.PASSWORD, dsn=dsnStr)
+    con = cx_Oracle.connect(user=config.USER, password=config.PASSWORD, dsn=dsnStr)
     return con
 
 '''
